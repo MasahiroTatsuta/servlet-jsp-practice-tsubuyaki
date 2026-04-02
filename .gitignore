@@ -1,0 +1,34 @@
+# Eclipse 関連
+.metadata/
+.recommenders/
+RemoteSystemsTempFiles/
+.plugins/
+Servers/
+.settings/
+.classpath
+.project
+
+# ビルド成果物
+bin/
+build/
+target/
+out/
+*.class
+
+# OS固有
+Thumbs.db
+.DS_Store
+
+# DB
+*.properties
+*.env
+application.properties
+db.properties
+context.xml
+META-INF/context.xml
+
+# Tomcat
+webapps/
+work/
+temp/
+logs/

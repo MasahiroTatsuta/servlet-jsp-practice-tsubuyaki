@@ -1,4 +1,4 @@
--- 使用するデータベースを指定（docker-composeのMYSQL_DATABASEと合わせる）
+-- 使用するデータベースを指定
 USE myproject;
 
 -- テーブル作成: customer2
@@ -8,15 +8,6 @@ CREATE TABLE customer2 (
   password varchar(100) NOT NULL,
   role varchar(16) NOT NULL DEFAULT 'GENERAL'
 );
-
--- データ挿入: customer2
-INSERT INTO customer2 VALUES 
-  (1,'ayukawa','SweetfishRevier1','GENERAL'),
-  (2,'samejima','SharkIsland2','GENERAL'),
-  (3,'wanibuchi','CrocodileChasm3','GENERAL'),
-  (4,'ebihara','ShrimpField4','GENERAL'),
-  (5,'kanie','CrubBay5','GENERAL'),
-  (6,'admin','AdminCarp6','ADMIN');
 
 -- テーブル作成: board2
 CREATE TABLE board2 (

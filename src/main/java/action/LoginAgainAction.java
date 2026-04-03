@@ -1,10 +1,11 @@
+package action;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class HomeAction implements Action {
+public class LoginAgainAction implements Action {
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		return "/WEB-INF/login-out.jsp";
+		return "/index.jsp";
 	}
 
 }

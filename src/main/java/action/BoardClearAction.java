@@ -1,3 +1,4 @@
+package action;
 import java.util.List;
 import java.util.Map;
 
@@ -7,15 +8,16 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import dao.BoardDAO;
 
-public class BoardClearItemAction implements Action {
+public class BoardClearAction implements Action {
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String id = request.getParameter("id");
-		String boardPage = request.getParameter("boardPage");
 		String loginId = request.getParameter("loginId");
+		String boardPage = request.getParameter("boardPage");
+		String contentsLoginId = request.getParameter("contentsLoginId");
 		
-		if (id != null) {
+		if (loginId != null) {
 		    BoardDAO dao = new BoardDAO();
-		    dao.deleteBoardItem(id);
+		    // 削除実行
+		    dao.deleteBoard(loginId);
 		    
 		    if("All".equals(boardPage)) {
 		    	List<Map<String, String>> contentsList = dao.viewContents();		
@@ -25,7 +27,7 @@ public class BoardClearItemAction implements Action {
 				return "/WEB-INF/board-out.jsp";
 				
 		    } else {
-		    	List<Map<String, String>> contentsList = dao.viewContents(loginId);		
+		    	List<Map<String, String>> contentsList = dao.viewContents(contentsLoginId);		
 				ServletContext application = request.getServletContext();
 				application.setAttribute("board", contentsList);
 				
@@ -40,3 +42,5 @@ public class BoardClearItemAction implements Action {
 	}
 
 }
+
+

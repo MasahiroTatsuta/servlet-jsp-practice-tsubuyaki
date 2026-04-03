@@ -1,3 +1,4 @@
+package servlet;
 
 
 import java.io.IOException;
@@ -11,8 +12,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
+import action.Action;
 import bean.Customer2;
-
 /**
  * Servlet implementation class FrontController
  */
@@ -53,10 +54,10 @@ public class FrontController extends HttpServlet {
 			
 			// Login.action -> LoginActionに変換
 			String path = request.getServletPath().substring(1);
-			String name = path.replace(".a", "A").replace('/', '.');
+			String name = "action." + path.replace(".action", "Action").replace('/', '.');
 			
 			// Admin用Actionリスト
-			List<String> loginActions = Arrays.asList("LoginAction", "LoginAgainAction");
+			List<String> loginActions = Arrays.asList("action.LoginAction", "action.LoginAgainAction");
 			
 			// ログイン中か否か
 			if(customer == null && !loginActions.contains(name)) {
@@ -67,7 +68,7 @@ public class FrontController extends HttpServlet {
 			// AccountList Regist RegistFormは管理者のみアクセス出来るようにする
 			
 			// Admin用Actionリスト
-			List<String> adminActions = Arrays.asList("AccountListAction", "RegistAction", "RegistFormAction");
+			List<String> adminActions = Arrays.asList("action.AccountListAction", "action.RegistAction", "action.RegistFormAction");
 			
 			// 「.action」で終わり、かつ除外リストに含まれていない場合の処理
 			if(path.endsWith(".action") && !adminActions.contains(name)) {

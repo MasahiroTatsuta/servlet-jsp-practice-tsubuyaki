@@ -1,3 +1,4 @@
+package action;
 import java.util.List;
 import java.util.Map;
 
@@ -7,14 +8,15 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import dao.BoardDAO;
 
-public class BoardAction implements Action {
+public class BoardLoginItemAction implements Action {
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String loginId = request.getParameter("loginId");
 		BoardDAO dao = new BoardDAO();
-		List<Map<String, String>> contentsList = dao.viewContents();		
+		List<Map<String, String>> contentsList = dao.viewContents(loginId);		
 		ServletContext application = request.getServletContext();
 		application.setAttribute("board", contentsList);
 				
-		return "/WEB-INF/board-out.jsp";
+		return "/WEB-INF/board-out-loginId.jsp";
 	}
 
 }

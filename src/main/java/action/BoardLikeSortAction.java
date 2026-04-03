@@ -1,3 +1,4 @@
+package action;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -7,7 +8,7 @@ import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class BoardDisLikeSortAction implements Action {
+public class BoardLikeSortAction implements Action {
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String boardPage = request.getParameter("boardPage");
 		ServletContext application = request.getServletContext();
@@ -20,11 +21,11 @@ public class BoardDisLikeSortAction implements Action {
 			if ("asc".equals(sortOrderString)) {
 		        // 昇順（少ない順）
 				sortedList.sort(Comparator.comparingInt(map -> 
-	            Integer.parseInt(String.valueOf(map.get("disLikes")))));
+	            Integer.parseInt(String.valueOf(map.get("likes")))));
 		    } else {
 		        // 降順（多い順）: デフォルト
 		    	sortedList.sort(Comparator.comparingInt((Map<String, Object> map) -> 
-	            Integer.parseInt(String.valueOf(map.get("disLikes")))).reversed());
+	            Integer.parseInt(String.valueOf(map.get("likes")))).reversed());
 			
 		    }
 			

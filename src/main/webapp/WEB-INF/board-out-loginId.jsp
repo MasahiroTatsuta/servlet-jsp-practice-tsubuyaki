@@ -104,7 +104,11 @@
 </table>
 <p><strong>like total= ${likeTotal}. dislike total=${disLikeTotal}</strong></p>
 <br>
-<a href="BoardClear.action?loginId=<c:out value='${customer.loginId}' />&boardPage=&contentsLoginId=<c:out value='${contents.loginId}' />" class="back-button">Clear</a>
+<c:forEach var="b" items="${board}">
+	<c:if test="${customer.loginId==b.loginId}">
+		<a href="BoardClear.action?loginId=<c:out value='${customer.loginId}' />&boardPage=&contentsLoginId=<c:out value='${b.loginId}' />" class="back-button">Clear</a>
+	</c:if>
+</c:forEach>
 <br>
 <a href="Board.action">BACK TO ALL BOARDS</a>
 </body>
